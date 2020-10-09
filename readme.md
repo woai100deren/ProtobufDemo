@@ -1,0 +1,1 @@
+## 此项目配合后端 websocket 项目使用，主要是websocket的连接、发送、接收消息，并且可以使用protobuf格式进行数据交互。
