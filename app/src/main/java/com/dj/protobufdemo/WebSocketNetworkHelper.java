@@ -13,6 +13,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -27,7 +28,7 @@ import okio.ByteString;
 public class WebSocketNetworkHelper {
     private static final String TAG = WebSocketNetworkHelper.class.getName();
     private static final int DEFAULT_TIMEOUT = 10;//网络超时时间（单位秒）
-    public static final String BASE_URL = "ws://192.168.111.101:8091//websocket/axiba";//网络请求URL地址
+    public static final String BASE_URL = "ws://192.168.111.102:8091//websocket/axiba";//网络请求URL地址
     private volatile static WebSocketNetworkHelper webSocketNetworkHelper;
     private WebSocket mWebSocket;
     private WebSocketSubscriber webSocketSubscriber;
@@ -78,8 +79,10 @@ public class WebSocketNetworkHelper {
             public void onMessage(@NonNull String text) {
                 Log.e(TAG, "收到服务器返回数据String:\n" + text);
 
+                //临时模拟，后台通过base64序列化protobuf数据，客户端接收到数据之后，进行反序列化，并且转化成protobuf对象数据
                 try {
-                    Login.LoginResponse response = Login.LoginResponse.parseFrom(text.getBytes());
+                    Login.LoginResponse response = Login.LoginResponse.parseFrom(Base64.getDecoder().decode(text));
+                    Log.e(TAG, "接收到数据后，解析：code = "+response.getCode() + ",msg = "+response.getMsg());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
