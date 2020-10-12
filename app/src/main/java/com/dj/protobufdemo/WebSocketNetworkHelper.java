@@ -81,7 +81,7 @@ public class WebSocketNetworkHelper {
 
                 //临时模拟，后台通过base64序列化protobuf数据，客户端接收到数据之后，进行反序列化，并且转化成protobuf对象数据
                 try {
-                    Login.LoginResponse response = Login.LoginResponse.parseFrom(Base64.getDecoder().decode(text));
+                    Login.LoginResponse response = Login.LoginResponse.parseFrom(Base64Utils.decode(text).getBytes());
                     Log.e(TAG, "接收到数据后，解析：code = "+response.getCode() + ",msg = "+response.getMsg());
                 } catch (Exception e) {
                     e.printStackTrace();

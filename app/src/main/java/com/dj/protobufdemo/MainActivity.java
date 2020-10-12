@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtils.debug(BuildConfig.DEBUG);
         ActivityMainBinding dataBinding =  DataBindingUtil.setContentView(this, R.layout.activity_main);
         dataBinding.connectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
