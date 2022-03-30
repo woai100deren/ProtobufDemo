@@ -1,20 +1,3 @@
-export VERSION_NAME="${MajorVersion}.${MinorVersion}.${FixVersion}"."${BuildNo}"
-
-echo "${VERSION_NAME}"
-
-export CI=true
-export BUILD_MODE=release
-
-echo "当前工作目录$PWD"
-
-export CODE_REVISION=$(git rev-parse --short HEAD)
-echo "此次编译代码版本为:${CODE_REVISION}"
-
-chmod +x cibuild.sh
-/bin/sh cibuild.sh
-
-
-# 来看下cibuild.sh长啥样：
 
 #!/usr/bin/env bash
 
