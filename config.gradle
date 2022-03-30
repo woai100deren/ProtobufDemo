@@ -1,0 +1,22 @@
+ext {
+    // version code不能随便修改，正常每个版本升一级
+    version_code = 1000
+    // 构建号,本地默认取版本号
+    build_no = "${version_code}"
+    build_front_name = "1.0.0"
+    apk_prefix = "SOHO_ANDROID"
+    batch_run = true
+    build_mode = "debug"
+    build_version = build_front_name + "." + build_no
+
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: '28.0.0',
+            applicationId    : "com.dj.protobufdemo",
+            minSdkVersion    : 16,
+            targetSdkVersion : 28,
+            javaVersion      : JavaVersion.VERSION_1_8,
+            versionCode      : version_code,
+            versionName      : build_front_name
+    ]
+}
