@@ -4,7 +4,7 @@ ext {
     // 构建号,本地默认取版本号
     build_no = "${version_code}"
     build_front_name = "1.0.0"
-    apk_prefix = "SOHO_ANDROID"
+    apk_prefix = "ProtobugDemo"
     batch_run = true
     build_mode = "debug"
     build_version = build_front_name + "." + build_no
